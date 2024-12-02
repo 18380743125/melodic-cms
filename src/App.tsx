@@ -1,6 +1,4 @@
 function App() {
-  console.log(1)
-
   return <main>hello</main>
 }
 

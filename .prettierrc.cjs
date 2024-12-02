@@ -8,7 +8,7 @@ module.exports = {
   // 结尾不用分号
   semi: false,
   // 使用单引号
-  singleQuote: true,
+  singleQuote: false,
   // 在JSX中使用单引号而不是双引号
   jsxSingleQuote: true,
   // 箭头函数里面，如果是一个参数的时候，去掉括号

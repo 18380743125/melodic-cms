@@ -1,0 +1,28 @@
+html,
+body {
+	background-color: #eeeff7;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	color: #323232;
+	letter-spacing: 1px;
+	min-width: 1200px;
+}
+
+.base-table {
+	background-color: white;
+	border-radius: 5px;
+	padding: 0 12px;
+}
+
+.header-wrapper {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	border-radius: 5px 5px 0 0;
+	color: #000;
+	padding: 15px 20px;
+}
+
+.header-wrapper .action button {
+	margin-left: 15px;
+}

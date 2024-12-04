@@ -4,7 +4,8 @@ import CoRequest from './request'
 
 // 下载文件
 const download = (res: AxiosResponse, customName?: string) => {
-  const filename = res.headers['content-disposition']?.replace(/\w+;filename=(.*)/, '$1') || customName
+  const filename =
+    res.headers['content-disposition']?.replace(/\w+;filename=(.*)/, '$1') || customName
   const dom = document.createElement('a')
   const url = window.URL.createObjectURL(res.data)
   dom.href = url

@@ -5,10 +5,10 @@ import Compressor from 'compressorjs'
  * @param file
  * @returns
  */
-export function compressFile(file: File): Promise<File | Blob> {
+export function compressFile(file: File, quality = 0.75): Promise<File | Blob> {
   return new Promise((resolve, reject) => {
     new Compressor(file, {
-      quality: 0.85,
+      quality,
       success(result) {
         resolve(result)
       },

@@ -2,32 +2,27 @@
  * 分页参数
  */
 export interface PageParams {
-  currentPage: number
+  pageNo: number
   pageSize: number
 }
 
 /**
- * 创建和更新时间
+ * 接口公共字段
  */
-export interface CreateUpdateTime {
-  createTime: string
-  updateTime: string
+export interface CommonFields {
+  createTime?: string
+  updateTime?: string
+  createBy?: string
+  updateBy?: string
+  isDeleted?: number
 }
 
 /**
- * 创建人和更新人
+ * 公共查询字段
  */
-export interface CreateUpdateBy {
-  createBy: string
-  updateBy: string
-}
-
-/**
- * 开始和结束时间
- */
-export interface StartEndTime {
-  startTime: Date
-  endTime: Date
+export interface CommonQueryFields {
+  startTime?: Date
+  endTime?: Date
 }
 
 /**
@@ -35,14 +30,14 @@ export interface StartEndTime {
  */
 export namespace Result {
   // 基础响应实体
-  export interface BaseResult<T = any> {
+  export interface Base<T = any> {
     code: number
     message?: string
     data?: T
   }
 
   // 分页响应实体
-  export interface PageResult<T = any> {
+  export interface Page<T = any> {
     currentPage: number
     totalPages: number
     pageSize: number
@@ -60,55 +55,11 @@ export namespace Login {
     username: string
     password: string
     code: string
-    uuid?: string
   }
 
   // 验证码
   export interface Captcha {
     image: string
     uuid: string
-  }
-
-  // token
-  export type Token = string
-}
-
-/**
- * 微信用户
- */
-export namespace WechatUser {
-  export interface UserItem extends CreateUpdateTime {
-    userId: string
-    realName: string
-    username: string
-    openId: string
-    unionId: string
-    phoneNumber: string
-    avatarUrl: string
-    status: string
-    loginIp: string
-    loginDate: string
-    delFlag: string
-    idCard: string
-    email: string
-    teamName: string
-    teamRole: string
-    hobbies: string
-    province: string
-    city: string
-    country: string
-    height: string
-    weight: string
-    introduction: string
-    birthDate: string
-  }
-
-  export interface QueryParams extends PageParams {
-    realName: string
-    username: string
-    email: string
-    phoneNumber: string
-
-    [key: string]: any
   }
 }

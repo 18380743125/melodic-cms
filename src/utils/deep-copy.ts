@@ -13,7 +13,7 @@ export function deepCopy(originValue: any, map = new WeakMap()) {
 
   // 原始值
   if (!isObject(originValue)) return originValue
-  // 处理函数n
+  // 处理函数
   if (typeof originValue === 'function') return originValue
 
   // 处理 set

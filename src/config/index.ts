@@ -18,10 +18,8 @@ interface Config {
 
 const config: Config = {
   dev: {
-    baseUrl: 'https://bingdaotiyu.com/api-new',
+    baseUrl: '',
     assetUrl: ''
-    // baseUrl: 'http://localhost:8085',
-    // assetUrl: 'http://localhost:8085',
   },
   prod: {
     baseUrl: '/api',
@@ -29,7 +27,11 @@ const config: Config = {
   }
 }
 
+// 公共配置
+const commonConfig = {}
+
 export default {
   env,
-  ...config[env]
+  ...config[env],
+  ...commonConfig
 }

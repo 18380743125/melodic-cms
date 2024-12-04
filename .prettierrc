@@ -1,8 +1,9 @@
 {
-  "printWidth": 120,
+  "printWidth": 100,
   "useTabs": false,
   "semi": false,
   "singleQuote": true,
+  "jsxSingleQuote": true,
   "arrowParens": "avoid",
   "bracketSpacing": true,
   "trailingComma": "none"

@@ -14,7 +14,7 @@ body {
   padding: 0 12px;
 }
 
-.header-wrapper {
+.table-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -23,6 +23,6 @@ body {
   padding: 15px 20px;
 }
 
-.header-wrapper .action button {
+.table-header .action button {
   margin-left: 15px;
 }

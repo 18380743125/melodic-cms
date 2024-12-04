@@ -3,30 +3,6 @@ import sparkMD5 from 'spark-md5'
 import DOMPurify from 'dompurify'
 
 /**
- * 是否拥有某个操作权限
- * @param auth
- * @returns
- */
-// export function hasPermission(auth: string) {
-//   const loginUser = localCache.getCache(CacheKey.LOGIN_USER)
-//   const permissions = localCache.getCache(CacheKey.PERMISSION_LIST)
-
-//   // 角色标识列表
-//   const roleKeys = loginUser.roles.map((item: any) => item.roleKey)
-
-//   // 不需要授权 或者 超级管理员
-//   if (!auth || permissions.includes('*.*@*') || roleKeys.includes(RoleKeyEnum.SUPER_ADMIN)) {
-//     return true
-//   }
-
-//   if (permissions.includes(auth)) {
-//     return true
-//   }
-
-//   return false
-// }
-
-/**
  * 将 blob 转 base64
  * @param file 文件
  */
@@ -157,7 +133,12 @@ export function getTreeItemByCondition(tree: any[], key: string, value: string):
 /**
  * 递归查找菜单路径（面包屑）
  */
-export const findTreeNodePath = (tree: any[], key: string, value: string, path: string[]): string[] => {
+export const findTreeNodePath = (
+  tree: any[],
+  key: string,
+  value: string,
+  path: string[]
+): string[] => {
   if (!tree) return []
   for (const data of tree) {
     path.push(data.menuName)

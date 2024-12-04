@@ -37,8 +37,14 @@ class Request {
     )
 
     // 实例拦截器
-    this.instance.interceptors.request.use(config.interceptors?.requestSuccessFn, config.interceptors?.requestFailFn)
-    this.instance.interceptors.response.use(config.interceptors?.responseSuccessFn, config.interceptors?.responseFailFn)
+    this.instance.interceptors.request.use(
+      config.interceptors?.requestSuccessFn,
+      config.interceptors?.requestFailFn
+    )
+    this.instance.interceptors.response.use(
+      config.interceptors?.responseSuccessFn,
+      config.interceptors?.responseFailFn
+    )
   }
 
   request<T = any>(config: MyRequestConfig<T>) {
@@ -64,7 +70,9 @@ class Request {
     return this.request({ ...config, method: 'GET', headers: {} as AxiosRequestHeaders })
   }
 
-  post<T = any>(config: Omit<MyRequestConfig<T>, 'headers'> & { headers?: { 'Content-Type': string } }) {
+  post<T = any>(
+    config: Omit<MyRequestConfig<T>, 'headers'> & { headers?: { 'Content-Type': string } }
+  ) {
     return this.request({ ...config, method: 'POST', headers: {} as AxiosRequestHeaders })
   }
 

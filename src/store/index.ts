@@ -2,8 +2,12 @@ import { configureStore } from '@reduxjs/toolkit'
 import { shallowEqual, useDispatch, useSelector } from 'react-redux'
 import type { TypedUseSelectorHook } from 'react-redux'
 
+import mainReducer from './features/main'
+
 const store = configureStore({
-  reducer: {}
+  reducer: {
+    main: mainReducer
+  }
 })
 
 type StateFnType = typeof store.getState

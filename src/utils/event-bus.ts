@@ -1,3 +1,6 @@
+/**
+ * : 事件总线
+ */
 class EventBus {
   private readonly eventMap: Record<string, ((...args: any[]) => unknown)[]>
 

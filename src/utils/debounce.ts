@@ -12,7 +12,10 @@ export default function debounce(fn: (...arg: any[]) => unknown, config: Config)
   const { delay, immediate = false } = config
   let timer: NodeJS.Timeout | null = null
   let isInvoke = false
-
+  timer = setTimeout(() => {
+    isInvoke = false
+    timer = null
+  }, delay)
   const _debounce = function (...args: any[]) {
     return new Promise((resolve, reject) => {
       try {

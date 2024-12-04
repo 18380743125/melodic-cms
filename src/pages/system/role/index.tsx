@@ -1,7 +1,5 @@
 const AppLayoutFC = () => {
-    return <main>
-        hello
-    </main>
+  return <main>hello</main>
 }
 
 export default AppLayoutFC

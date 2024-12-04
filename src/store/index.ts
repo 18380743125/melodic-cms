@@ -3,8 +3,7 @@ import { shallowEqual, useDispatch, useSelector } from 'react-redux'
 import type { TypedUseSelectorHook } from 'react-redux'
 
 const store = configureStore({
-    reducer: {
-    }
+  reducer: {}
 })
 
 type StateFnType = typeof store.getState

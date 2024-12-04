@@ -13,5 +13,5 @@ export interface MyInterceptors<T = AxiosResponse> {
 
 export interface MyRequestConfig<T = AxiosResponse> extends CoRequestConfig {
   interceptors?: MyInterceptors<T>
-	options?: Record<string, any>
+  options?: Record<string, any>
 }

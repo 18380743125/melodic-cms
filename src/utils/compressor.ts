@@ -1,4 +1,4 @@
-import Compressor from 'compressorjs';
+import Compressor from 'compressorjs'
 
 /**
  * 压缩文件
@@ -10,11 +10,11 @@ export function compressFile(file: File): Promise<File | Blob> {
     new Compressor(file, {
       quality: 0.85,
       success(result) {
-        resolve(result);
+        resolve(result)
       },
       error(err) {
-        reject(err);
+        reject(err)
       }
-    });
-  });
+    })
+  })
 }

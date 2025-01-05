@@ -6,7 +6,7 @@ import styles from './styles.module.scss'
 const LoginFC = () => {
   return (
     <main className={styles.root}>
-      <div className={styles.login}>
+      <section className={styles.login}>
         <div className={styles.title}>系统登录</div>
         <Form initialValues={{ username: '', password: '' }} autoComplete='off' labelAlign='left'>
           {/* 用户名 */}
@@ -54,7 +54,7 @@ const LoginFC = () => {
             </Button>
           </div>
         </Form>
-      </div>
+      </section>
     </main>
   )
 }

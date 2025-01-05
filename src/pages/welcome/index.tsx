@@ -1,5 +1,5 @@
 const WelcomeFC = () => {
-  return <div>Welcome</div>
+  return <div style={{ padding: 20 }}>Welcome</div>
 }
 
 export default WelcomeFC

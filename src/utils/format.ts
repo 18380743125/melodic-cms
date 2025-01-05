@@ -84,7 +84,7 @@ export const formatMobile = (mobile?: number) => {
  */
 export function formatNull(str: string | undefined) {
   if (str === null || str === '' || str === undefined) {
-    return '——'
+    return '—'
   }
   return str
 }

@@ -6,7 +6,7 @@ interface IProps extends ButtonProps {
   children: ReactNode
 }
 
-const AuthButton = (props: IProps) => {
+const AuthButton = (_props: IProps) => {
   return <></>
 }
 

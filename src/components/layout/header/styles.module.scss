@@ -1,0 +1,43 @@
+.headerLayout {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 50px;
+  padding: 0 10px;
+	margin: 6px 6px 0 6px;
+  background-color: white;
+	border-radius: 8px 8px 0 0;
+  color: #000;
+
+  .left {
+    display: flex;
+    align-items: center;
+
+    .foldIcon {
+      cursor: pointer;
+    }
+  }
+
+  .right {
+    width: 140px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 10px;
+  }
+
+  .userInfo {
+    display: flex;
+    align-items: center;
+		cursor: pointer;
+
+    .realName {
+      font-size: 15px;
+      margin-left: 10px;
+    }
+
+    .img {
+      border-radius: 8px;
+    }
+  }
+}

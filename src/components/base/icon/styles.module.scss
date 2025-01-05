@@ -1,0 +1,44 @@
+// svg icon
+.svgIcon {
+  width: 1em;
+  height: 1em;
+  position: relative;
+  fill: currentColor;
+}
+
+// select icon
+.selectIcon {
+  .iconList {
+    width: 100%;
+    max-height: 240px;
+    overflow: auto;
+    display: flex;
+    flex-wrap: wrap;
+    flex-shrink: 0;
+    margin-top: 6px;
+  }
+
+  .iconItem {
+    display: flex;
+    align-items: center;
+    width: 33%;
+    padding: 6px 0;
+
+    .content {
+      display: flex;
+      align-items: center;
+      padding: 8px 16px;
+      border-radius: 10px;
+      cursor: pointer;
+
+      &:hover,
+      &.active {
+        background-color: #f5f5f5;
+      }
+    }
+
+    .icon {
+      margin-right: 6px;
+    }
+  }
+}

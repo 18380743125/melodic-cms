@@ -1,8 +1,6 @@
-import Login from '@/pages/login'
+import { lazy } from 'react'
 import { Navigate, RouteObject } from 'react-router-dom'
-
-import Error403 from '@/pages/403'
-import Error404 from '@/pages/404'
+import LazyImportComponent from './lazy-import-component'
 
 const staticRoutes: RouteObject[] = [
   {
@@ -11,15 +9,15 @@ const staticRoutes: RouteObject[] = [
   },
   {
     path: '/login',
-    element: <Login />
+    element: <LazyImportComponent lazyChildren={lazy(() => import('@/pages/login'))} />
   },
   {
     path: '/403',
-    element: <Error403 />
+    element: <LazyImportComponent lazyChildren={lazy(() => import('@/pages/403'))} />
   },
   {
     path: '/404',
-    element: <Error404 />
+    element: <LazyImportComponent lazyChildren={lazy(() => import('@/pages/404'))} />
   },
   {
     path: '*',

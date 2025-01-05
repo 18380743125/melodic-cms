@@ -1,3 +1,5 @@
+import { MutableRefObject } from 'react'
+
 /**
  * 分页参数
  */
@@ -7,9 +9,9 @@ export interface PageParams {
 }
 
 /**
- * 接口公共字段
+ * 接口响应公共字段
  */
-export interface CommonFields {
+export interface CommonResponseFields {
   createTime?: string
   updateTime?: string
   createBy?: string
@@ -46,20 +48,15 @@ export namespace Result {
   }
 }
 
-/**
- * 用户登录
- */
-export namespace Login {
-  // 登录参数
-  export interface Params {
-    username: string
-    password: string
-    code: string
-  }
+export type IAction = 'create' | 'edit' | 'delete'
 
-  // 验证码
-  export interface Captcha {
-    image: string
-    uuid: string
-  }
+export interface IModalProp {
+  mref: MutableRefObject<
+    { open: (action: IAction, payload?: Record<string, any>) => void } | undefined
+  >
+  update: () => void
+}
+
+export interface IDetailProp {
+  mref: MutableRefObject<{ open: (id: string, payload?: Record<string, any>) => void } | undefined>
 }

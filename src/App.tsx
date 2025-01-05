@@ -1,10 +1,12 @@
 import { ConfigProvider } from 'antd'
-import { BrowserRouter } from 'react-router-dom'
+import { RouterProvider } from 'react-router-dom'
 
 import AntdGlobal from './utils/AntdGlobal'
-import AppRouterFC from './router'
+import useAppRouter from './router'
 
 function AppFC() {
+  const router = useAppRouter()
+
   const theme = {
     token: {
       colorPrimary: '#4096ff'
@@ -26,9 +28,7 @@ function AppFC() {
       <AntdGlobal />
 
       {/* 路由 */}
-      <BrowserRouter>
-        <AppRouterFC />
-      </BrowserRouter>
+      <RouterProvider router={router} />
     </ConfigProvider>
   )
 }

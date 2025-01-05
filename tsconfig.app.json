@@ -14,9 +14,9 @@
     "moduleDetection": "force",
     "noEmit": true,
     "jsx": "react-jsx",
-    "baseUrl": "./",
+    "baseUrl": ".", // 查询的基础路径
     "paths": {
-      "@/*": ["src/*"]
+      "@/*": ["src/*"] // 路径映射,配合别名使用
     },
 
     /* Linting */

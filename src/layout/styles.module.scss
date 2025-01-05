@@ -1,0 +1,17 @@
+.layout {
+  height: 100%;
+  width: 100%;
+}
+
+.contentLayout {
+  height: 100%;
+  padding: 6px 6px;
+  display: flex;
+  flex-direction: column;
+
+  .content {
+    flex: 1;
+    background-color: white;
+    border-radius: 4px;
+  }
+}

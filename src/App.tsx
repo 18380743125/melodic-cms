@@ -1,5 +1,8 @@
 import { ConfigProvider } from 'antd'
 import { RouterProvider } from 'react-router-dom'
+import zhCN from 'antd/locale/zh_CN'
+import 'dayjs/locale/zh-cn'
+import 'virtual:svg-icons-register'
 
 import AntdGlobal from './utils/AntdGlobal'
 import useAppRouter from './router'
@@ -24,7 +27,7 @@ function AppFC() {
     }
   }
   return (
-    <ConfigProvider theme={theme}>
+    <ConfigProvider locale={zhCN} theme={theme}>
       <AntdGlobal />
 
       {/* 路由 */}

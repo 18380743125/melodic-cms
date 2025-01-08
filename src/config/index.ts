@@ -18,7 +18,7 @@ interface Config {
 
 const config: Config = {
   dev: {
-    baseUrl: '',
+    baseUrl: 'http://127.0.0.1:8081',
     assetUrl: ''
   },
   prod: {

@@ -28,5 +28,5 @@
     "noImplicitThis": false,
     "noImplicitAny": false
   },
-  "include": ["src"]
+  "include": ["src", "typings.d.ts"]
 }

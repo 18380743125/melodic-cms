@@ -17,7 +17,7 @@ const download = (res: AxiosResponse, customName?: string) => {
   window.URL.revokeObjectURL(url)
 }
 
-const coRequest = new CoRequest({
+const Request = new CoRequest({
   timeout: 10000,
   baseURL: '/api',
   interceptors: {
@@ -42,4 +42,4 @@ const coRequest = new CoRequest({
   }
 })
 
-export default coRequest
+export default Request

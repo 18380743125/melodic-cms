@@ -4,8 +4,9 @@ import { useForm } from 'antd/es/form/Form'
 import { ColumnsType } from 'antd/es/table'
 import { useAntdTable } from 'ahooks'
 
-import SearchForm from '@/components/search-form'
 import AuthButton from '@/components/base/auth-button'
+import SearchForm from '@/components/table/search-form'
+import ActionBar from '@/components/table/action-bar'
 import CreateEditMenu from './create-edit-menu'
 
 import { message, modal } from '@/utils/AntdGlobal'
@@ -15,7 +16,7 @@ import { formatNull } from '@/utils/format'
 
 import type { IAction } from '@/types/common'
 
-// import styles from './styles.module.scss'
+import styles from './styles.module.scss'
 
 const MenuList = () => {
   const tableRef = useRef<HTMLDivElement | null>(null)
@@ -142,24 +143,24 @@ const MenuList = () => {
   ]
 
   return (
-    <section>
+    <section className={styles.root}>
       {/* 搜索栏 */}
       <SearchForm initialValues={{ status: '' }} form={form} reset={onReset} submit={search.submit}>
-        <Form.Item label='菜单名称' name='menuName'>
-          <Input placeholder='菜单名称' />
+        <Form.Item name='menuName'>
+          <Input style={{ width: 220 }} placeholder='请输入菜单名称' />
         </Form.Item>
       </SearchForm>
 
-      <section className='header'>
-        <div className='title'></div>
-        <div className='action'>
+      {/* 操作栏 */}
+      <ActionBar
+        operatorRight={
           <AuthButton type='primary' onClick={onCreate}>
             新增
           </AuthButton>
-        </div>
-      </section>
+        }
+      />
 
-      <section className='app-table' ref={tableRef}>
+      <section className={styles.appTable} ref={tableRef}>
         <Table
           scroll={{ y: tableScrollY, scrollToFirstRowOnChange: true }}
           rowKey='menuId'

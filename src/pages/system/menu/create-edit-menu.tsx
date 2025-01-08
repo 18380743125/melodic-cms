@@ -9,12 +9,10 @@ import { message } from '@/utils/AntdGlobal'
 import type { IAction, IModalProp } from '@/types/common'
 
 const rules: Record<string, FormRule[]> = {
-  menuName: [
-    { required: true, message: '请输入菜单名称' },
-    { max: 32, message: '菜单名称不能超过32个字符' }
+  name: [
+    { required: true, message: '请输入权限名称' },
+    { max: 32, message: '权限名称不能超过32个字符' }
   ],
-  path: [{ max: 125, message: '路由地址不能超过125个字符' }],
-  icon: [{ required: true, message: '请输入选择菜单图标' }],
   permission: [{ required: true, message: '权限标识不能为空' }]
 }
 
@@ -22,7 +20,7 @@ const CreateEditMenu = (props: IModalProp) => {
   const [form] = useForm()
   const [action, setAction] = useState<IAction>('create')
   const [visible, setVisible] = useState(false)
-  const [menuList, setMenuList] = useState([])
+  const [list, setList] = useState([])
 
   useImperativeHandle(props.mref, () => ({
     open
@@ -32,12 +30,12 @@ const CreateEditMenu = (props: IModalProp) => {
   const open = (type: IAction) => {
     setAction(type)
     setVisible(true)
-    loadMenuList()
+    loadList()
   }
 
   // 加载上级菜单
-  const loadMenuList = async () => {
-    setMenuList([])
+  const loadList = async () => {
+    setList([])
   }
 
   // 提交
@@ -51,7 +49,7 @@ const CreateEditMenu = (props: IModalProp) => {
     } else {
       message.success('更新成功')
     }
-    onCancel()
+    // onCancel()
     props.update()
   }
 
@@ -65,9 +63,9 @@ const CreateEditMenu = (props: IModalProp) => {
     <Modal
       style={{ top: 30 }}
       title={
-        <span style={{ marginLeft: 20 }}>{action === 'create' ? '创建菜单' : '编辑菜单'}</span>
+        <span style={{ marginLeft: 20 }}>{action === 'create' ? '创建权限' : '编辑权限'}</span>
       }
-      width={830}
+      width={730}
       open={visible}
       okText='确定'
       cancelText='取消'
@@ -80,74 +78,77 @@ const CreateEditMenu = (props: IModalProp) => {
         form={form}
         labelAlign='right'
         labelCol={{ span: 3 }}
-        initialValues={{ parentId: '', menuType: '0', status: '0' }}
+        initialValues={{ parentId: '', type: '0', status: '0' }}
+        autoComplete={'off'}
       >
-        <Form.Item hidden name='menuId'>
+        <Form.Item hidden name='id'>
           <Input />
         </Form.Item>
 
-        <Form.Item label='上级菜单' name='parentId'>
+        <Form.Item label='上级权限' name='parentId'>
           <TreeSelect
-            placeholder='请选择父级菜单'
+            placeholder='请选择父级权限'
             allowClear
             treeDefaultExpandAll
-            fieldNames={{ label: 'menuName', value: 'menuId' }}
-            treeData={menuList}
+            fieldNames={{ label: 'name', value: 'id' }}
+            treeData={list}
             labelInValue={false}
           />
         </Form.Item>
 
-        <Form.Item label='菜单类型' name='menuType'>
-          <Radio.Group>
-            <Radio value={'0'}>菜单</Radio>
-            <Radio value={'1'}>页面</Radio>
-            <Radio value={'2'}>按钮</Radio>
-          </Radio.Group>
+        <Form.Item required label='权限名称' name='name' rules={rules.name}>
+          <Input placeholder='请填写权限名称' />
         </Form.Item>
 
-        <Form.Item label='菜单名称' name='menuName' rules={rules.menuName}>
-          <Input placeholder='请输入菜单名称' />
+        <Form.Item label='权限类型' name='type'>
+          <Radio.Group>
+            <Radio value={'0'}>菜单</Radio>
+            <Radio value={'1'}>操作</Radio>
+            <Radio value={'2'}>页面</Radio>
+          </Radio.Group>
         </Form.Item>
 
         <Form.Item noStyle shouldUpdate>
           {() => {
-            const menuType = form.getFieldValue('menuType')
-            return menuType === 1 ? (
+            const type = form.getFieldValue('type')
+            let dynamicItems = (
               <>
-                <Form.Item label='权限标识' name='permission' rules={rules.permission}>
-                  <Input placeholder='请输入权限标识' />
+                <Form.Item label='路由地址' name='url'>
+                  <Input placeholder='请填写路由地址' />
                 </Form.Item>
-              </>
-            ) : (
-              <>
-                <Form.Item label='组件路径' name='component'>
-                  <Input placeholder='请输入组件路径' />
+                <Form.Item label='组件路径' name='path'>
+                  <Input placeholder='请填写组件路径' />
                 </Form.Item>
-                <Form.Item required label='路由地址' name='path' rules={rules.path}>
-                  <Input placeholder='请输入路由地址' />
-                </Form.Item>
-                {form.getFieldValue('menuType') === 0 && (
-                  <Form.Item required label='菜单图标' name='icon' rules={rules.icon}>
+                {type === '0' && (
+                  <Form.Item label='权限图标' name='icon' rules={rules.icon}>
                     <IconSelect />
                   </Form.Item>
                 )}
               </>
             )
+            if (type === '1') {
+              dynamicItems = (
+                <Form.Item label='权限标识' name='permission' rules={rules.permission}>
+                  <Input placeholder='请填写权限唯一标识' />
+                </Form.Item>
+              )
+            }
+            return dynamicItems
           }}
         </Form.Item>
 
         <Form.Item
           label='排序'
           name='orderNum'
-          tooltip={{ title: '排序值越大越靠后', icon: <InfoCircleOutlined rev={undefined} /> }}
+          tooltip={{ title: '排序值越大位置越靠后', icon: <InfoCircleOutlined /> }}
         >
-          <InputNumber style={{ width: 160 }} placeholder='请输入排序值' />
+          <InputNumber min={0} style={{ width: 180 }} placeholder='请输入排序值' />
         </Form.Item>
 
-        <Form.Item label='菜单状态' name='status'>
+        <Form.Item label='启用状态' name='status'>
           <Radio.Group>
-            <Radio value={'0'}>启用</Radio>
-            <Radio value={'1'}>停用</Radio>
+            <Radio value={'0'}>是</Radio>
+            <Radio value={'1'}>否</Radio>
           </Radio.Group>
         </Form.Item>
       </Form>

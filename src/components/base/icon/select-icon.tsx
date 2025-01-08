@@ -46,11 +46,10 @@ const IconSelect = (props: IProps) => {
       list.push(item)
     })
     setIconList(list)
-    // 保存图标名称
     setIconNames(names)
-  }, [iconList])
+  }, [])
 
-  // 根据名称过滤图标
+  // 根据名称过滤图标(搜索)
   useEffect(() => {
     if (icon === '') {
       setFilterIconList(iconList)
